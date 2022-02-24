@@ -1,4 +1,4 @@
-const baseURL = `http://localhost:4000/api`;
+const baseURL = `https://sg-monitoring-lab.herokuapp.com`;
 
 const responseFormater = () => {
   document.querySelector(`#fortuneResponse`).className = `fortuneResponse`;
