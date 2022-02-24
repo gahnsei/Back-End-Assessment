@@ -22,8 +22,6 @@ const compliments = [
 ];
 
 module.exports = {
-  rollbarTest: rollbar.log('Hello world!'),
-  
   getAllFortune: (req, res) => {
     res.status(200).send(fortunes);
   },

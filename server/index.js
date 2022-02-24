@@ -22,7 +22,7 @@ const rollbar = new Rollbar({
 })
 
 // record a generic message and send it to Rollbar
-ctrl.rollbarTest
+rollbar.log('Hello world!'),
 
 app.get("/api/compliment", ctrl.getCompliment);
 app.get(`/api/fortune`, ctrl.getAllFortune);
