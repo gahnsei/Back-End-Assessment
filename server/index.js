@@ -14,6 +14,16 @@ app.get(`/`, (req, res) => {
     res.sendFile(path.join(__dirname, `../client/index.html`))
 })
 
+const Rollbar = require('rollbar')
+const rollbar = new Rollbar({
+  accessToken: '12a4b99e26f14aa5bb778bfa6273715d',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 
 app.get("/api/compliment", ctrl.getCompliment);
 app.get(`/api/fortune`, ctrl.getAllFortune);
