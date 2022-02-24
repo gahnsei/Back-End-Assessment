@@ -1,4 +1,4 @@
-const baseURL = `https://sg-monitoring-lab.herokuapp.com`;
+const baseURL = `https://sg-monitoring-lab.herokuapp.com/api`;
 
 const responseFormater = () => {
   document.querySelector(`#fortuneResponse`).className = `fortuneResponse`;
