@@ -26,7 +26,12 @@ rollbar.log('Hello world!'),
 app.use(rollbar.errorHandler())
 
 app.get(`/formError`, (req, res) => {
-    rollbar.error(`Improper input`)
+    rollbar.warning(`Improper input`)
+    res.sendStatus(400)
+})
+app.post(`/deleteError`, (req, res) => {
+    let {error} = req.params
+    rollbar.critical(error)
     res.sendStatus(400)
 })
 app.get("/api/compliment", ctrl.getCompliment);

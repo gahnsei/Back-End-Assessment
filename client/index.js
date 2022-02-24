@@ -94,11 +94,8 @@ document.querySelector(`#fortuneForm`).addEventListener(`submit`, (event) => {
       .then((res) => userCard(res.data))
       .catch((error) => console.log(error));
   } else {
-      axios.get(`/formError`)
-        .then(res => {
-        alert(`Please Fill Out Both The Name And Fortune Textboxes`);
-      })
-        .catch(err => console.log(err))
+    axios.get(`/formError`).catch((err) => console.log(err));
+    alert(`Please Fill Out Both The Name And Fortune Textboxes`);
   }
 });
 
@@ -111,5 +108,8 @@ document.querySelector(`#deleteForm`).addEventListener(`submit`, (event) => {
   axios
     .delete(`${baseURL}/fortune/${user}`)
     .then((res) => allUserCard(res.data))
-    .catch((error) => alert(error));
+    .catch((error) =>{
+      axios.post(`/deleteError`, { error }).catch((er) => console.log(er))
+      alert(error)}
+    );
 });
