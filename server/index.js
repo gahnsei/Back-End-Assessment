@@ -23,13 +23,19 @@ const rollbar = new Rollbar({
 
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!'),
+app.use(rollbar.errorHandler())
 
+app.get(`/formError`, (req, res) => {
+    rollbar.error(`Improper input`)
+    res.sendStatus(400)
+})
 app.get("/api/compliment", ctrl.getCompliment);
 app.get(`/api/fortune`, ctrl.getAllFortune);
 app.get(`/api/fortune/random`, ctrl.getFortune);
 app.post(`/api/fortune`, ctrl.addFortune);
 app.put(`/api/fortune`, ctrl.addFortune);
 app.delete(`/api/fortune/:user`, ctrl.deleteUser);
+
 
 let port = process.env.PORT || 4000
 

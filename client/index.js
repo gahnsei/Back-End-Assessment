@@ -94,7 +94,11 @@ document.querySelector(`#fortuneForm`).addEventListener(`submit`, (event) => {
       .then((res) => userCard(res.data))
       .catch((error) => console.log(error));
   } else {
-    alert(`Please Fill Out Both The Name And Fortune Textboxes`);
+      axios.get(`/formError`)
+        .then(res => {
+        alert(`Please Fill Out Both The Name And Fortune Textboxes`);
+      })
+        .catch(err => console.log(err))
   }
 });
 
